@@ -4,6 +4,16 @@ This repository contains all the assignments from `188.992 Experiment Design for
 
 Each assignment has it's corresponding folder and all the relevant data should be self-contained in those folders.
 
+## Getting started
+
+Execute the each script inside the `features` folder.
+
+### Visual Features
+
+```{python}
+python features/build_visual.py ../data/raw/Dev_Set/vis_descriptors/ ../data/raw/Test_Set/vis_descriptors/ ../data/processed/
+```
+
 ## Group 28 members:
 
 * Ameni ???
