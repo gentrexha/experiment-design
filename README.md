@@ -16,14 +16,15 @@ python features/build_visual.py ../data/raw/Dev_Set/vis_descriptors/ ../data/raw
 
 ## Group 28 members:
 
-* Ameni ???
+* Ameni Ben Smida
 * Gent Rexha
 * Princ Mullatahiri
 
 ## Tasks
 
-- [ ] 14.12.2019 - First Meeting
-- [ ] ??.??.???? - Exercise 2 Submission Deadline
+- [x] 14.12.2019 - First Meeting
+- [ ] 09.01.2019 - Intermediate Project Presentation
+- [ ] 30.01.2019 - Exercise 2 Submission Deadline
 
 Project Organization
 ------------

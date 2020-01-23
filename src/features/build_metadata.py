@@ -1,12 +1,13 @@
-
 from pathlib import Path
 import pandas as pd
 import xml.etree.ElementTree as ET
 import numpy as np
 
+
 def main():
     directory_in_str = "..\\..\\data\\raw\\Dev\\Metadata"
     pathlist = Path(directory_in_str).glob('**/*.xml')
+
     tags = {"tags": []}
     for path in pathlist:
         root = ET.parse(str(path)).getroot()
@@ -22,9 +23,10 @@ def main():
                                  "imdbVotes","imdbID","type","tomatoMeter","tomatoImage","tomatoRating",
                                  "tomatoReviews","tomatoFresh","tomatoRotten","tomatoConsensus","tomatoUserMeter",
                                  "tomatoUserRating","tomatoUserReviews","DVD","BoxOffice","Production","Website"]
+
             for att in attributesOfMovie:
                 tag[att] = elem.attrib[att]
-            tag['name'] = str(path.name.replace('.xml',''))
+            tag["name"] = str(path.name.replace(".xml", ""))
             tags["tags"].append(tag)
 
     df = pd.DataFrame(tags["tags"])
@@ -71,10 +73,11 @@ def main():
 
     #One hot encoding per categorical values
 
-    df.to_csv("..\\..\\data\\processed\\metadata_descriptor_dev.csv", encoding='utf-8', index=False)
+    #df.to_csv("..\\..\\data\\processed\\metadata_descriptor_dev.csv", encoding='utf-8', index=False)
 
 
-    #print(audioData)
+
+    # print(audioData)
 
 
 if __name__ == "__main__":
