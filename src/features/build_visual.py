@@ -17,7 +17,7 @@ def main(dev_filepath, test_filepath, output_filepath):
     logger = logging.getLogger(__name__)
     logger.info("Feature preprocessing visual features into dev and test dataframes.")
 
-    visual_col_names = ["fileName"]
+    visual_col_names = ["name"]
     visual_col_names.extend(["col" + str(i) for i in range(0, 826)])
 
     dev_names = []
@@ -44,8 +44,8 @@ def main(dev_filepath, test_filepath, output_filepath):
     )
 
     # Insert
-    df_dev.insert(0, "fileName", dev_names)
-    df_test.insert(0, "fileName", test_names)
+    df_dev.insert(0, "name", dev_names)
+    df_test.insert(0, "name", test_names)
 
     df_dev.to_csv(
         output_filepath + "visual_descriptor_dev.csv",
