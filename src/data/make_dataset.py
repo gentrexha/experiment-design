@@ -3,7 +3,6 @@ import logging
 import pandas as pd
 import numpy as np
 from pathlib import Path
-from dotenv import find_dotenv, load_dotenv
 from typing import List, Tuple
 
 
@@ -277,7 +276,7 @@ def main():  # input_filepath, output_filepath
         data = v.copy()
         data = data.drop("train", axis=1)
         data["class"] = df_labels_dev["class"]
-        data.to_csv(eval_path / f"{k}_dev.csv", index=False)
+        data.to_csv(eval_path / f"{k}_dev.csv", index=True)
 
     # Combine the dataframes to the test sets used in the paper
     logger.info("Combining test dataframes.")
@@ -301,7 +300,7 @@ def main():  # input_filepath, output_filepath
         data = v.copy()
         data = data.drop("train", axis=1)
         data["class"] = df_labels_test["class"]
-        data.to_csv(eval_path / f"{k}_test.csv", index=False)
+        data.to_csv(eval_path / f"{k}_test.csv", index=True)
 
     logger.info("Finished creating dataframes!")
 
@@ -337,9 +336,5 @@ if __name__ == "__main__":
         "tomatoUserMeter",
         "train",
     ]
-
-    # find .env automagically by walking up directories until it's found, then
-    # load up the .env entries as environment variables
-    load_dotenv(find_dotenv())
 
     main()

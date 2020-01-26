@@ -1,6 +1,4 @@
-# local package
--e .
-
+numpy
 # external requirements
 click
 Sphinx
