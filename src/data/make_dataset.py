@@ -276,7 +276,7 @@ def main():  # input_filepath, output_filepath
         data = v.copy()
         data = data.drop("train", axis=1)
         data["class"] = df_labels_dev["class"]
-        data.to_csv(eval_path / f"{k}_dev.csv", index=True)
+        data.to_csv(eval_path / f"{k}_dev.csv", index=False)
 
     # Combine the dataframes to the test sets used in the paper
     logger.info("Combining test dataframes.")
@@ -300,7 +300,7 @@ def main():  # input_filepath, output_filepath
         data = v.copy()
         data = data.drop("train", axis=1)
         data["class"] = df_labels_test["class"]
-        data.to_csv(eval_path / f"{k}_test.csv", index=True)
+        data.to_csv(eval_path / f"{k}_test.csv", index=False)
 
     logger.info("Finished creating dataframes!")
 
