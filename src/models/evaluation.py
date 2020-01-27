@@ -71,6 +71,8 @@ def load_data():
         "Visual": df_visual_test,
         "Metadata": df_metadata_test,
         "Metadata + user rating": df_metadata_user_ratings_test,
+        "Audio": df_audio_test,
+        "Text": df_text_test,
     }
     df_train = pd.concat(dev_set, axis=1, sort=False)
     df_test = pd.concat(test_set, axis=1, sort=False)
@@ -90,7 +92,7 @@ def las_vegas(train_x, train_y, valid_x, valid_y, model, scorer, n_iterations=10
         features = random.sample(list(train_x.columns), n_features)
 
         model.fit(
-            train_x[features], train_y,
+            train_x[features], train_y
         )
 
         score = scorer(model, valid_x[features], valid_y)
@@ -227,7 +229,7 @@ def majority_voting(dev_set, test_set):
         model = classifiers[result[1]]
 
         train_predictions = cross_val_predict(
-            model, data_train[result[2]], data_train["class"], cv=10
+            model, data_train[result[2]], data_train["class"], cv=10, n_jobs=-1
         )
 
         model.fit(data_train[result[2]], data_train["class"])
@@ -261,7 +263,7 @@ def label_stacking(dev_set, test_set):
         model = classifiers[result[1]]
 
         train_predictions = cross_val_predict(
-            model, data_train[result[2]], data_train["class"], cv=10
+            model, data_train[result[2]], data_train["class"], cv=10, n_jobs=-1
         )
 
         model.fit(data_train[result[2]], data_train["class"])
@@ -273,7 +275,7 @@ def label_stacking(dev_set, test_set):
     # evaluate new dataframe
     stacked_estimator = LogisticRegression()
     train_predictions_stacked = cross_val_predict(
-        stacked_estimator, df_train, data_train["class"], cv=10
+        stacked_estimator, df_train, data_train["class"], cv=10, n_jobs=-1
     )
     stacked_estimator.fit(df_train, data_train["class"])
     stacked_test_predictions = stacked_estimator.predict(df_test)
@@ -331,7 +333,7 @@ def label_attr_stacking(dev_set, test_set, full_train, full_test):
         model = classifiers[result[1]]
 
         train_predictions = cross_val_predict(
-            model, data_train[result[2]], data_train["class"], cv=10
+            model, data_train[result[2]], data_train["class"], cv=10, n_jobs=-1
         )
 
         model.fit(data_train[result[2]], data_train["class"])

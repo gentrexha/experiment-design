@@ -184,6 +184,10 @@ def preprocess_metadata(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def preprocess_text(df: pd.DataFrame) -> pd.DataFrame:
+    return df.fillna(0)
+
+
 def main():  # input_filepath, output_filepath
     """ Runs data processing scripts to turn processed data from
         (../processed) into cleaned data ready to be analyzed
@@ -239,6 +243,10 @@ def main():  # input_filepath, output_filepath
     df_visual = join_train_test_datasets(dev_sets["Visual"], test_sets["Visual"])
     df_text = join_train_test_datasets(dev_sets["Text"], test_sets["Text"])
     df_audio = join_train_test_datasets(dev_sets["Audio"], test_sets["Audio"])
+
+    # Text
+    logger.info("Creating text dataframe.")
+    df_text = preprocess_text(df_text)
 
     # Metadata
     logger.info("Creating metadata dataframe.")
