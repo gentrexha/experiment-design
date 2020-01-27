@@ -275,9 +275,9 @@ def main():  # input_filepath, output_filepath
     dict_dev["text"] = df_text[df_text["train"] == True]
     # TODO: Discuss this below with @PrincMullatahiri
     # dict_dev["jcd"] = df_visual_jcd[df_visual_jcd["train"] == True]
-    # dict_dev["jcd_metadata"] = pd.concat(
-    #     (dict_dev["metadata"], dict_dev["jcd"]), axis=1, sort=False
-    # )
+    dict_dev["metadata_visual"] = pd.concat(
+        (dict_dev["metadata"], dict_dev["visual"]), axis=1, sort=False
+    )
 
     # Save for feature evaluation
     for k, v in dict_dev.items():
@@ -299,9 +299,9 @@ def main():  # input_filepath, output_filepath
     dict_test["text"] = df_text[df_text["train"] == False]
     # TODO: Discuss this below with @PrincMullatahiri
     # dict_test["jcd"] = df_visual_jcd[df_visual_jcd["train"] == False]
-    # dict_test["jcd_metadata"] = pd.concat(
-    #     (dict_test["metadata"], dict_test["jcd"]), axis=1, sort=False
-    # )
+    dict_test["metadata_visual"] = pd.concat(
+        (dict_test["metadata"], dict_test["visual"]), axis=1, sort=False
+    )
 
     # save for feature evaluation
     for k, v in dict_test.items():
