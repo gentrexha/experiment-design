@@ -1,0 +1,6 @@
+Dataset,Precision,Recall,F1-score
+Metadata,0.520,0.525,0.520
+Metadata+User Ratings,0.514,0.520,0.512
+User Ratings,0.462,0.480,0.459
+Metadata+Visual,0.473,0.480,0.474
+Visual,0.503,0.511,0.501
